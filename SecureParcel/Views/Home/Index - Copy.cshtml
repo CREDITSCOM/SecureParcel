@@ -1,0 +1,75 @@
+﻿@using SecureParcel.Models
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="authorization">
+    <div class="container flex row">
+        <div class="authorization__info">
+            <h1 class="title title--red">Welcome to MyDHL</h1>
+            <p class="text--dark text--middle">The ever-accelerating evolution of computer technology has placed stringent demands on manufacturers of both the actual computer technology and peripherals.</p>
+        </div>
+        <div class="authorization__img"> <img src="/img/girl_.png" alt="DHL"></div>
+    </div>
+
+    <div class="authorization__forms">
+
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form flex column", role = "form" }))
+        {
+            <h2 class="text--middle">Login to your account</h2>
+            @Html.AntiForgeryToken()
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.TextBoxFor(m => m.Email, new { @class = "form__input", @placeholder = "Email" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+            @Html.PasswordFor(m => m.Password, new { @class = "form__input", @placeholder = "Password" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+            <div class="form__field">
+                <input type="checkbox" id="checkbox">
+                <label class="text--dark" for="checkbox">Remember me</label>
+            </div>
+            <input class="button button--grey button--big" type="submit" value="Login">
+
+            @*<div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                <div class="">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <input type="submit" value="Login" class="btn btn-light container" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.ActionLink("Sign up", "Register")
+                </div>
+                <div class="col-md-6 push-right">
+                    @Html.ActionLink("Forgot password?", "ForgotPassword")
+                </div>
+            </div>*@
+        }
+
+        <section class="form flex column">
+            <h2 class="text--middle">Are you new MyDHL customer?</h2>
+            <a href="/Account/Register" class="button button--red button--big">Registration</a>
+        </section>
+
+    </div>
+</section>
+

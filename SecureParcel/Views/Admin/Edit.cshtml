@@ -1,0 +1,602 @@
+﻿@model SecureParcel.Models.ParcelModel
+@using GridMvc.Html
+
+@{
+    ViewBag.Title = "Edit task";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+<style>
+
+    button:focus,
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+    }
+
+    .tabs {
+        display: block;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -moz-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin: 0;
+        overflow: hidden;
+    }
+
+        .tabs [class^="tab"] label,
+        .tabs [class*=" tab"] label {
+            color: #020202;
+            cursor: pointer;
+            display: block;
+            font-size: 1.5em;
+            font-weight: 500;
+            line-height: 1.2em;
+            padding: 1rem 0;
+            text-align: left;
+        }
+
+        .tabs [class^="tab"] [type="radio"],
+        .tabs [class*=" tab"] [type="radio"] {
+            border-bottom: 1px solid rgba(239, 237, 239, 0.5);
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            display: block;
+            width: 100%;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .tabs [class^="tab"] [type="radio"]:hover,
+            .tabs [class^="tab"] [type="radio"]:focus,
+            .tabs [class*=" tab"] [type="radio"]:hover,
+            .tabs [class*=" tab"] [type="radio"]:focus {
+                border-bottom: 1px solid #fd264f;
+            }
+
+            .tabs [class^="tab"] [type="radio"]:checked,
+            .tabs [class*=" tab"] [type="radio"]:checked {
+                border-bottom: 2px solid #fd264f;
+            }
+
+                .tabs [class^="tab"] [type="radio"]:checked + div,
+                .tabs [class*=" tab"] [type="radio"]:checked + div {
+                    opacity: 1;
+                }
+
+            .tabs [class^="tab"] [type="radio"] + div,
+            .tabs [class*=" tab"] [type="radio"] + div {
+                display: block;
+                opacity: 0;
+                padding: 2rem 0;
+                width: 90%;
+                -webkit-transition: all 0.3s ease-in-out;
+                -moz-transition: all 0.3s ease-in-out;
+                -o-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+            }
+
+        .tabs .tab-2 {
+            width: 50%;
+        }
+
+            .tabs .tab-2 [type="radio"] + div {
+                width: 200%;
+                margin-left: 200%;
+            }
+
+            .tabs .tab-2 [type="radio"]:checked + div {
+                margin-left: 0;
+            }
+
+            .tabs .tab-2:last-child [type="radio"] + div {
+                margin-left: 100%;
+            }
+
+            .tabs .tab-2:last-child [type="radio"]:checked + div {
+                margin-left: -100%;
+            }
+
+    .tab-2-label {
+        padding-left: 15px !important;
+    }
+
+    .new-message-control {
+        margin-top: 0px !important; 
+        border: 1px solid #ced4da !important;
+    }
+
+    .new-message-control:focus {
+        border: 1px solid #80bdff !important;
+    }
+
+    .comments-block {
+        min-height: 150px;
+        height: 150px;
+        border: 1px solid #ced4da;
+        margin-bottom: 15px;
+        overflow-y: scroll;
+    }
+
+    .track-block {
+        min-height: 150px;
+        height: 150px;
+        border: 1px solid #ced4da;
+        margin-bottom: 15px;
+        overflow-y: scroll;
+    }
+
+    .comment-date {
+        font-size: small;
+        padding: 5px 5px 0px 5px;
+        margin-bottom: 0px;
+        color: #063ead;
+    }
+
+    .comment-text {
+        padding: 0px 5px 5px 5px;
+        margin-bottom: 0px;
+    }
+
+    .event-date {
+        font-size: small;
+        padding: 5px 5px 0px 5px;
+        margin-bottom: 0px;
+        color: #063ead;
+    }
+
+    .event-text {
+        padding: 0px 5px 5px 5px;
+        margin-bottom: 0px;
+    }
+
+    .btn-pay {
+        height: 40px !important;
+        margin-top: 18px !important;
+        cursor: pointer;
+    }
+
+    .btn-pay:hover {
+        color: white !important;
+    }
+
+</style>
+
+<div class="">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div>
+        @*@if (Model.GUID == "-1")
+        {
+            <h3>New parcel</h3>
+        }
+        else
+        {
+            <h3>Edit parcel</h3>
+        }*@
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.GUID)
+
+        <h4>Parcel info</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Parcel.Name, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Parcel.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Parcel.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Parcel.Description, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Parcel.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Parcel.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="header-block">Sender</h4>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sender.PublicKey, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Sender.PublicKey, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.Sender.PublicKey, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sender.Address, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Sender.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Sender.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sender.Name, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Sender.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Sender.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <h4 class="header-block">Payment</h4>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        @Html.LabelFor(model => model.Payment.Amount, htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.EditorFor(model => model.Payment.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Payment.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @if (Model.Delivery.Status == SecureParcel.Classes.Database.DeliveryStatusEnum.AwaitingPayment.ToString())
+                    {
+                        <a href="/Admin/Pay?GUID=@Model.GUID" class="btn-1 btn-pay"><i class="fas fa-save"></i> Pay</a>
+                    }
+                    else
+                    {
+                        <div class="col-md-6 form-group">
+                            @Html.LabelFor(model => model.Payment.Date, htmlAttributes: new { @class = "control-label" })
+                            <div class="">
+                                @Html.EditorFor(model => model.Payment.Date, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                @Html.ValidationMessageFor(model => model.Payment.Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Payment.SafeAccount, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Payment.SafeAccount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Payment.SafeAccount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <h4 class="header-block">Comments</h4>
+                <div class="comments-block">
+                    @foreach (var comment in Model.MessageList)
+                    {
+                        <p class="comment-date">@comment.User.FullName<span> @comment.Date.ToString()</span></p>
+                        <p class="comment-text">@comment.Text</p>
+                    }
+                </div>
+
+                @*@if (Model.GUID != "-1")
+                {
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control new-message-control" placeholder="" aria-label="Add new comment" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn-1" type="button" id="button-addon2">Add comment</button>
+                        </div>
+                    </div>
+                }
+                else*@
+                @* { *@
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label" })*@
+                        <div class="">
+                            @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control", @placeholder = "Text your comment here..." } })
+                            @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                @* } *@
+            </div>
+
+            <div class="col-md-6">
+                <h4 class="header-block">Recipient</h4>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Recipient.PublicKey, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Recipient.PublicKey, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Recipient.PublicKey, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Recipient.Address, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Recipient.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Recipient.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Recipient.Name, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Recipient.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Recipient.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <h4 class="header-block">Delivery</h4>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Delivery.TrackNumber, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Delivery.TrackNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Delivery.TrackNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    @*<div class="col-md-6 form-group">
+                        @Html.LabelFor(model => model.Delivery.DeliveryStatus, htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.EditorFor(model => model.Delivery.DeliveryStatus, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.Delivery.DeliveryStatus, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        @Html.LabelFor(model => model.Delivery.ShipmentDate, htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.EditorFor(model => model.Delivery.ShipmentDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.Delivery.ShipmentDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+                </div>
+
+                <h4 class="header-block">Track events</h4>
+                <div class="track-block">
+                    @foreach (var trackEvent in Model.TrackEventList)
+                    {
+                        <p class="event-date">@trackEvent.Date.ToString()</p>
+                        <p class="event-text">@trackEvent.Text</p>
+                    }
+                </div>
+
+                <div class="save-btn-div">
+                    <button type="submit" class="btn-1"><i class="fas fa-save"></i> Save</button>
+                </div>
+
+            </div>
+        </div>
+
+        @*<div class="row tabs col-md-12">
+            <div class="tab-2">
+                <label for="tab2-1">Comments</label>
+                <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
+                <div>
+                    <div style="min-height:150px">
+                        @foreach (var comment in Model.MessageList)
+                        {
+                            <p>@comment.User.FullName</p><span> @comment.Date.ToString()</span>
+                            <p>@comment.Text</p>
+                        }
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control new-message-control" placeholder="Add new comment" aria-label="Add new comment" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-2">
+                <label for="tab2-2" class="tab-2-label">Track events</label>
+                <input id="tab2-2" name="tabs-two" type="radio">
+                <div>
+                    <p>
+                        lkjiuoijl;kj oij;l kjijoijoi hh,mhoiy ihkhdesfiu hdfsdj fhsdiufhsd kdsjhfv sdifuhy sdfsufh sdoifjdhlkfj sidfuweoijgslk gnvxf,khdfxgodsfkijg s
+                    </p>
+                </div>
+            </div>
+        </div>*@
+
+        @*<div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" style="margin-top: 23px;">
+                    <div class="">
+                        <div class="custom-control custom-switch">
+                            @Html.CheckBoxFor(model => model.IsActive, new { @class = "custom-control-input" })
+                            <label class="custom-control-label" for="IsActive">@Html.LabelFor(model => model.IsActive)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CreditsNet, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        <div class="checkbox">
+                            @Html.DropDownListFor(model => model.CreditsNet.ID, Model.CreditsNetList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CreditsNet, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaxFee, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.MaxFee, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MaxFee, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Method, htmlAttributes: new { @class = "control-label" })
+            <div class="">
+                @Html.EditorFor(model => model.Method, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Method, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+            <div class="">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExecutionMode, htmlAttributes: new { @class = "control-label" })
+            <div class="">
+                @Html.RadioButtonFor(s => s.ExecutionMode, SecureParcel.Classes.Database.SmartJob.ExecutionModeEnum.Regular)@Html.Label("Regular", new { @class = "radio-label" })
+                @Html.RadioButtonFor(s => s.ExecutionMode, SecureParcel.Classes.Database.SmartJob.ExecutionModeEnum.Once)@Html.Label("Once", new { @class = "radio-label" })
+                @Html.RadioButtonFor(s => s.ExecutionMode, SecureParcel.Classes.Database.SmartJob.ExecutionModeEnum.CronExpression)@Html.Label("Cron expression", new { @class = "radio-label" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="">
+                <div id="execution-mode-block-regular" style="display: none">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Rule.RegularDateFrom, htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Rule.RegularDateFrom, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "mm/dd/yyyy hh:mm:ss" } })
+                                    @Html.ValidationMessageFor(model => model.Rule.RegularDateFrom, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Rule.RegularDateTo, htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Rule.RegularDateTo, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "mm/dd/yyyy hh:mm:ss" } })
+                                    @Html.ValidationMessageFor(model => model.Rule.RegularDateTo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Rule.RegularValue, htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Rule.RegularValue, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Rule.RegularValue, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="">&nbsp;</label>
+                                <div class="">
+                                    @Html.DropDownListFor(model => model.Rule.RegularPeriod, Model.RegularPeriodList, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Rule.RegularPeriod, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="execution-mode-block-once" style="display: none">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Rule.OnceDate, htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Rule.OnceDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "mm/dd/yyyy hh:mm:ss" } })
+                                    @Html.ValidationMessageFor(model => model.Rule.OnceDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="execution-mode-block-cronexpression" style="display: none">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Rule.CronExpression, htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Rule.CronExpression, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Rule.CronExpression, "", new { @class = "text-danger" })
+                                </div>
+                                Use <a href="https://www.freeformatter.com/cron-expression-generator-quartz.html" target="_blank">online service</a> to generate cron expression
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn btn-light" href="/SendParcel/Index" data-toggle="tooltip" data-placement="top" title="Back to list"><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+            </div>
+            <div class="col-md-9 save-btn-div">
+                <a class="btn btn-light" href="/SendParcel/Delete?id=@Model.ID" data-toggle="tooltip" data-placement="top" title="Delete task"><i class="fas fa-times"></i> Delete</a>
+                <a class="btn btn-light" href="/SendParcel/Execute?id=@Model.ID" data-toggle="tooltip" data-placement="top" title="Execute task"><i class="fas fa-rocket"></i> Execute</a>
+                <button type="submit" class="btn btn-success"><i class="fas fa-save" data-toggle="tooltip" data-placement="top" title="Save task"></i> Save</button>
+            </div>
+        </div>*@
+    </div>
+    }
+</div>
+
+<script>
+
+    function updateRuleTypeBlock() {
+
+        var executionMode = $('#ExecutionMode:checked').val();
+
+        $('#execution-mode-block-regular').hide();
+        $('#execution-mode-block-once').hide();
+        $('#execution-mode-block-cronexpression').hide();
+
+
+        if (executionMode == 'Regular') {
+            $('#execution-mode-block-regular').show();
+        } else if (executionMode == 'Once') {
+            $('#execution-mode-block-once').show();
+        } else if (executionMode == 'CronExpression') {
+            $('#execution-mode-block-cronexpression').show();
+        }
+    }
+
+    $('input:radio').change(function () {
+        updateRuleTypeBlock();
+    });
+
+    $(document).ready(function () {
+
+        $(".datepicker").datetimepicker({
+            format: 'mm/dd/yyyy hh:ii:ss',
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: "bottom-left",
+            minuteStep: 1
+        });
+
+        updateRuleTypeBlock();
+
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

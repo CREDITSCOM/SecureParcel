@@ -1,0 +1,55 @@
+﻿@model SecureParcel.Models.ParcelModel
+@using SecureParcel.Classes
+
+@{
+    ViewBag.Title = "Send parcel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.ParcelList.Count == 0)
+{
+    <section class="send parcel section send--reciever">
+        <div class="container">
+            <h1 class="title title--grey text-center">You have not yet been sent a parcel</h1>
+        </div>
+    </section>
+}
+else
+{
+    <p class="table-header">Recieve parcel</p>
+
+    <section class="reciever container">
+        <table class="table" id="table">
+            <thead>
+                <tr>
+                    <th style="display:none">ID</th>
+                    <th>Sender</th>
+                    <th>Cost parcel</th>
+                    <th>Created at</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model.ParcelList)
+                {
+                    <tr>
+                        <td style="display:none">@row.GUID</td>
+                        <td>@row.SenderName</td>
+                        <td>@row.Amount</td>
+                        <td>@row.CreatedAt.ToLocalTime()</td>
+                        <td>@row.Status.GetDescription()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+}
+
+<script>
+
+    $(document).ready(function () {
+        $('#send-link').addClass('button--grey').removeClass('button--red');
+        $('#get-link').addClass('button--red').removeClass('button--grey');
+    });
+
+</script>

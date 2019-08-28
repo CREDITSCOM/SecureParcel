@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CS.Parcels</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/img/logo.svg" type="image/x-icon">
+
+    <link href="~/css/main.css?v30" rel="stylesheet" />
+
+    <script src="~/js/libs.min.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</head>
+<body>
+
+    <section class="header">
+        <div class="container flex row jcsb aifs">
+            <a class="logo" href=""><img src="/img/Logo_Cr.png" alt="Credits Logo" /><img src="/img/dhl.png" class="pesel" alt="DHL Logo" /><div class="lablo">Escrow&nbsp;delivery&nbsp;service</div></a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="header__nav-wrapper flex row jcsb aic"><a class="button button--grey button--middle" id="get-link" href="/GetParcel">Recieve parcel</a><a class="button button--grey button--middle ml20" id="send-link" href="/SendParcel">Send parcel</a></div>
+
+                <div class="header__nav-wrapper flex row jcsb aic">
+                    <div class="header__nav-text">
+                        <p class="text--dark">You are logged in as:</p>
+                        <p class="text--rec">Admin</p>
+                    </div><a class="button button--border-red button--small ml10" href="/Account/LogOff">Log out</a>
+                </div>
+            }
+            else
+            {
+                <div class="header__nav header__nav--main">
+                    <a class="header__nav-link text" href="#list">Главная</a>
+                    <a class="header__nav-link text" href="#why">Почему мы?</a>
+                    <a class="header__nav-link text" href="#trace">Преимущества</a>
+                    <a class="header__nav-link text" href="#management">О нас</a>
+                </div>
+            }
+        </div>
+    </section>
+
+    @RenderBody()
+
+    <section class="footer">
+        <div class="container">
+            <p class="text--white text--small">2019 © Credits. All rights reserved.</p>
+        </div>
+    </section>
+
+    <div class="modal flex jcc aic modal--success is-hidden">
+        <div class="modal__wrapper">
+            <div class="modal__close">  <img src="/img/icon-close.svg" alt="Close"></div>
+            <p class="text--middle text--red text-center">Sending parcel <span>No. 7432981309141893 </span>successfully added!</p><a class="button button--red button--big modal__button-small" href="">OK</a>
+        </div>
+    </div>
+
+    <div class="modal flex jcc aic modal--form is-hidden">
+        <form id="parcelForm" class="modal__wrapper">
+            <div class="modal__close">  <img src="/img/icon-close.svg" alt="Close"></div>
+            <p class="text--middle text--red modal__header" id="header">Создание новой отправки</p>
+            <div class="modal__form-field flex row jcsb">
+                <div class="modal__column">
+                    <div class="modal__row flex row jcsb">
+                        <p class="text--middle">Sender</p>
+                        <div class="modal__col">
+                            <div class="modal__field flex column">
+                                <label for="name">Full name*:</label>
+                                <input type="text" value="Антон Павлович Шпак" name="senderName" id="sender-name">
+                            </div>
+                            <div class="modal__field flex column">
+                                <label for="key">Public key*:</label>
+                                <input type="text" value="jfds7v980vdf896sd0s0vcxv9fs8y7" name="senderPublicKey" id="sender-public-key">
+                            </div>
+                            <div class="modal__field flex column">
+                                <label for="address">Address*:</label>
+                                <input type="text" value="г. Красногорск, бульвар Строителей, д. 4, корп. 1, кв 49" name="senderAddress" id="sender-address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal__row flex row jcsb">
+                        <p class="text--middle">Payment</p>
+                        <div class="modal__col">
+                            <div class="modal__inner-row flex row jcsb">
+                                <div class="modal__inner-field flex column">
+                                    <label for="payment">Amount, (CS)*:</label>
+                                    <input type="text" value="700" name="amount" id="amount">
+                                </div>
+                                <div class="modal__inner-field flex column input-group">
+                                    <label for="date">Date:</label>
+                                    <div class="paid-div">
+                                        <input type="text" value="Не оплачено" disabled="disabled" id="date-payment">
+                                        <div class="input-group-append paid-div-btn">
+                                            <button class="btn btn-outline-secondary paid-btn" type="button">Pay now</button>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <div class="modal__field flex column">
+                                <label for="account">Account number*:</label>
+                                <input type="text" value="jfds7v980vdf896sd0s0vcxv9fs8y7" name="accountNumber" id="account">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal__row flex row jcsb">
+                        <p class="text--middle">Note</p>
+                        <div class="modal__col">
+                            <div class="modal__field flex column">
+                                <label for="comment">Comment:</label>
+                                <textarea type="text" id="comment"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__column">
+                    <div class="modal__row flex row jcsb">
+                        <p class="text--middle">Recipient</p>
+                        <div class="modal__col">
+                            <div class="modal__field flex column">
+                                <label for="name">Full name*:</label>
+                                <input type="text" value="Антон Павлович Шпак" name="recipientName" id="recipient-name">
+                            </div>
+                            <div class="modal__field flex column">
+                                <label for="key">Public key*:</label>
+                                <input type="text" value="jfds7v980vdf896sd0s0vcxv9fs8y7" name="recipientPublicKey" id="recipient-public-key">
+                            </div>
+                            <div class="modal__field flex column">
+                                <label for="address">Address*:</label>
+                                <input type="text" value="г. Красногорск, бульвар Строителей, д. 4, корп. 1, кв 49" name="recipientPublicKey" id="recipient-address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal__row flex row jcsb">
+                        <p class="text--middle">Delivery</p>
+                        <div class="modal__col">
+                            <div class="modal__inner-row flex row jcsb">
+                                <div class="modal__inner-field flex column">
+                                    <label for="status">Status:</label>
+                                    <input type="text" value="Не отправлено" disabled="disabled" id="status">
+                                </div>
+                                <div class="modal__inner-field flex column">
+                                    <label for="date">Date:</label>
+                                    <input type="text" value="Не оплачено" disabled="disabled" id="date-delivery">
+                                </div>
+                            </div>
+                            <div class="modal__field flex column">
+                                <label for="track">Track number*:</label>
+                                <input type="text" value="23718923173616723651723 81237" name="track" id="track">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal__row flex column aife">
+                        <input class="button button--red button--big modal__button-big" id="save-button" type="submit" value="Send parcel">
+                    </div>
+                </div>
+            </div>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <button onclick="changeStatus(1)">1. Awaiting payment</button>
+                <button onclick="changeStatus(2)">2. Preparation for shipment</button>
+                <button onclick="changeStatus(3)">3. Parcel sent</button>
+                <button onclick="changeStatus(4)">4. Awaiting receipt</button>
+                <button onclick="changeStatus(5)">5. Received</button>
+                <button onclick="deleteParcel()">Delete</button>
+            }
+        </form>
+    </div>
+
+    <script>
+        function togglero() {
+            $('.hidden').toggle(0);
+            if ($('.hidden').css('display') == "block") {
+                $('#tuglu').html('Скрыть');
+            } else if ($('.hidden').css('display') == "none") {
+                $('#tuglu').html('Читать больше');
+            }
+        }
+    </script>
+    <script src="/js/main.js?v22"></script>
+</body>
+</html>

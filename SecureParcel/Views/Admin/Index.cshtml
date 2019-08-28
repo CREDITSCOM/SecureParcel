@@ -1,0 +1,111 @@
+﻿@model SecureParcel.Models.ParcelModel
+@using GridMvc.Html
+
+@{
+    ViewBag.Title = "Admin panel";
+}
+
+<div>
+    <div class="tool-bar">
+        <button class="btn-1" onclick="addParcel()" data-toggle="tooltip" data-placement="top" title="Add new parcel"><i class="fas fa-plus"></i> Add new parcel</button>
+        <button class="btn-1" onclick="editParcel()" data-toggle="tooltip" data-placement="top" title="Edit parcel"><i class="fas fa-edit"></i></button>
+        <button class="btn-1" onclick="deleteParcel()" data-toggle="tooltip" data-placement="top" title="Delete parcel"><i class="fas fa-times"></i></button>
+        <button class="btn-1" onclick="sendParcel()" data-toggle="tooltip" data-placement="top" title="Send parcel">3.Send parcel</button>
+        <button class="btn-1" onclick="awaitingReceipt()" data-toggle="tooltip" data-placement="top" title="Awaiting receipt">4.Awaiting receipt</button>
+        <button class="btn-1" onclick="parcelReceived()" data-toggle="tooltip" data-placement="top" title="Parcel received">5.Parcel received</button>
+    </div>
+    @*http://mvcgrid.net*@
+    @Html.Grid(Model.ParcelList).Columns(Columns =>
+    {
+        Columns.Add(o => o.GUID, true);
+        Columns.Add()
+        .Sortable(true)
+        .Filterable(true)
+        .SetWidth(30)
+        .Titled("#")
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(x => x.Status == SecureParcel.Classes.Database.DeliveryStatusEnum.Received ? "<div class='job-is-active'><i class='fas fa-circle'></i></div>" : "<div class='job-is-not-active'><i class='fas fa-circle'></i></div>");
+        Columns.Add(c => c.ParcelName).Titled("Parcel").Sortable(true).Filterable(true);
+        Columns.Add(c => c.Amount).Titled("Amount").Sortable(true).Filterable(true);
+        Columns.Add(c => c.RecipientName).Titled("Recipient").Sortable(true).Filterable(true);
+        Columns.Add(c => c.Status).Titled("Status").Sortable(true).Filterable(true);
+    }).WithPaging(10).Sortable(true)
+</div>
+
+
+<script>
+
+    var selectedRowId = 0;
+
+    $(function () {
+
+        $('table tr').click(function () {
+
+            selectedRowId = $(this).closest("tr").find('td:eq(0)').text();
+        });
+
+        $('table tr').dblclick(function () {
+
+            window.location.href = "/Admin/Edit?GUID=" + selectedRowId;
+        });
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+    });
+
+    function addParcel() {
+        window.location.href = "/Admin/Edit?id=-1";
+    }
+
+    function editParcel() {
+        if (selectedRowId != 0) {
+            window.location.href = "/Admin/Edit?GUID=" + selectedRowId;
+        }
+        else {
+            $('#modal-body').text('Parcel is not selected!');
+            $('#exampleModal').modal('show');
+        }
+    }
+
+    function deleteParcel() {
+        if (selectedRowId != 0) {
+            window.location.href = "/Admin/Delete?GUID=" + selectedRowId;
+        }
+        else {
+            $('#modal-body').text('Parcel is not selected!');
+            $('#exampleModal').modal('show');
+        }
+    }
+
+    function sendParcel() {
+        if (selectedRowId != 0) {
+            window.location.href = "/Admin/SendParcel?GUID=" + selectedRowId;
+        }
+        else {
+            $('#modal-body').text('Parcel is not selected!');
+            $('#exampleModal').modal('show');
+        }
+    }
+
+    function awaitingReceipt() {
+        if (selectedRowId != 0) {
+            window.location.href = "/Admin/AwaitingReceipt?GUID=" + selectedRowId;
+        }
+        else {
+            $('#modal-body').text('Parcel is not selected!');
+            $('#exampleModal').modal('show');
+        }
+    }
+
+    function parcelReceived() {
+        if (selectedRowId != 0) {
+            window.location.href = "/Admin/ParcelReceived?GUID=" + selectedRowId;
+        }
+        else {
+            $('#modal-body').text('Parcel is not selected!');
+            $('#exampleModal').modal('show');
+        }
+    }
+
+</script>

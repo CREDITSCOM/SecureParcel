@@ -1,0 +1,25 @@
+﻿@model SecureParcel.Classes.Database.Parcel
+
+@{
+    ViewBag.Title = "Send parcel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn-1" href="/Admin/Index"><i class="fas fa-arrow-alt-circle-left"></i> Back</a>
+                </div>
+                <div class="col-md-6 delete-btn-div">
+                    <button type="submit" class="btn-1"><i class="fas fa-award"></i> Receive @Model.Name</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

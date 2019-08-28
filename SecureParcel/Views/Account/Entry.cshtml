@@ -1,0 +1,50 @@
+﻿@using SecureParcel.Models
+@model EntryViewModel
+@{
+    ViewBag.Title = "Login to your account";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        &nbsp;
+    </div>
+    <div class="col-md-4">
+
+        <h2>Login to your account</h2>
+
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PublicKey, new { @class = "control-label" })
+                    <div class="">
+                        @Html.TextBoxFor(m => m.PublicKey, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PublicKey, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PrivateKey, new { @class = "control-label" })
+                    <div class="">
+                        @Html.PasswordFor(m => m.PrivateKey, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PrivateKey, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="">
+                        <input type="submit" value="Login" class="btn btn-light container" />
+                    </div>
+                </div>       
+            }
+        </section>
+    </div>
+    <div class="col-md-4">
+        &nbsp;
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
