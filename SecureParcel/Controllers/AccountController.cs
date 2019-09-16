@@ -161,7 +161,7 @@ namespace SecureParcel.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "SendParcel");
+                    return RedirectToAction("ProfileAccount", "SendParcel");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

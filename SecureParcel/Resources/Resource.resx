@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account_Login_Block1_Text_1_1" xml:space="preserve">
+    <value>Transparent and guaranteed payment for the delivery of goods using Credits blockchain</value>
+  </data>
+  <data name="Account_Login_Block1_Text_1_2" xml:space="preserve">
+    <value>Thanks to Blockchain, Escrow service works in a transparent and decentralized way. No one will be able to interrupt the operation, or cancel.</value>
+  </data>
+  <data name="Account_Login_Block1_Text_2_1" xml:space="preserve">
+    <value>Login to your account</value>
+  </data>
+  <data name="Account_Login_Block1_Text_2_2" xml:space="preserve">
+    <value>New user?</value>
+  </data>
+  <data name="Account_Login_Block2_Text_1_1" xml:space="preserve">
+    <value>Deal protection</value>
+  </data>
+  <data name="Account_Login_Block2_Text_1_2" xml:space="preserve">
+    <value>Blockchain acts as a guarantor of payment for delivery</value>
+  </data>
+  <data name="Account_Login_Block2_Text_2_1" xml:space="preserve">
+    <value>Save money</value>
+  </data>
+  <data name="Account_Login_Block2_Text_2_2" xml:space="preserve">
+    <value>Cost-effective solutions for bundling business processes of companies</value>
+  </data>
+  <data name="Account_Login_Block2_Text_3_1" xml:space="preserve">
+    <value>Automation</value>
+  </data>
+  <data name="Account_Login_Block2_Text_3_2" xml:space="preserve">
+    <value>Blockchain is a “robot” that works independently</value>
+  </data>
+  <data name="Account_Login_Block3_Text_1_1" xml:space="preserve">
+    <value>Bob decides to buy goods from Alice. Alice’s location is unknown to Bob. Bob is worried about how safely the transaction can be conducted. What if Alice receives the money, but decides not to send the goods to Bob?</value>
+  </data>
+  <data name="Account_Login_Block3_Text_1_2" xml:space="preserve">
+    <value>The best option for Bob to protect himself, is by using an escrow account on the blockchain.</value>
+  </data>
+  <data name="Account_Login_Block3_Text_2_1" xml:space="preserve">
+    <value>Blockchain escrow is the ability to use smart contracts and the Credits blockchain account system for safe payments between the buyer and seller. Smart contracts make it possible to automate the onset of transfers from one owner to another upon the occurrence of certain conditions: receipt of goods by the buyer upon delivery of goods via DHL.</value>
+  </data>
+  <data name="Account_Login_Block3_Text_3_1" xml:space="preserve">
+    <value>Bob the buyer pays the money, and Alice the seller can receive it when he fulfills the conditions previously prescribed in the blockchain smart contract. Blockchain acts as a third-party decentralized system that automatically monitors these conditions without any involvement of a person, or company.</value>
+  </data>
+  <data name="Account_Login_Block3_Text_Title" xml:space="preserve">
+    <value>Why is escrow service needed?</value>
+  </data>
+  <data name="Account_Login_Block4_Text_1_1" xml:space="preserve">
+    <value>Modern solution</value>
+  </data>
+  <data name="Account_Login_Block4_Text_1_2" xml:space="preserve">
+    <value>The blockchain market is projected to reach $3.1 trillion by 2030.</value>
+  </data>
+  <data name="Account_Login_Block4_Text_2_1" xml:space="preserve">
+    <value>Delivery of all goods</value>
+  </data>
+  <data name="Account_Login_Block4_Text_2_2" xml:space="preserve">
+    <value>Wide variety of choices. From food to containers.</value>
+  </data>
+  <data name="Account_Login_Block4_Text_3_1" xml:space="preserve">
+    <value>Flexible integration systems</value>
+  </data>
+  <data name="Account_Login_Block4_Text_3_2" xml:space="preserve">
+    <value>Smart contracts enable flexible customization</value>
+  </data>
+  <data name="Account_Login_Block4_Text_Title" xml:space="preserve">
+    <value>Track Now</value>
+  </data>
+  <data name="Account_Login_Block5_Text_Title" xml:space="preserve">
+    <value>You will appreciate the convenience of the service</value>
+  </data>
+  <data name="BTN_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="BTN_Continue_reading" xml:space="preserve">
+    <value>Continue reading</value>
+  </data>
+  <data name="BTN_Remember_me" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="BTN_Send_parcel" xml:space="preserve">
+    <value>Send parcel</value>
+  </data>
+  <data name="BTN_Sign_in" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="BTN_Sign_up" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="Demo_Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Demo_Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Demo_Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Demo_Comments_Text" xml:space="preserve">
+    <value>Calculation of cost and registration of an order</value>
+  </data>
+  <data name="Demo_Cost_cs" xml:space="preserve">
+    <value>Cost , (cs)</value>
+  </data>
+  <data name="Demo_Date_of_departure" xml:space="preserve">
+    <value>Date of departure</value>
+  </data>
+  <data name="Demo_Date_of_payment" xml:space="preserve">
+    <value>Date of payment</value>
+  </data>
+  <data name="Demo_Delivered" xml:space="preserve">
+    <value>Delivered</value>
+  </data>
+  <data name="Demo_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="Demo_Delivery_failure" xml:space="preserve">
+    <value>Delivery failure</value>
+  </data>
+  <data name="Demo_Delivery_Status" xml:space="preserve">
+    <value>Delivery Status</value>
+  </data>
+  <data name="Demo_En_route" xml:space="preserve">
+    <value>En route</value>
+  </data>
+  <data name="Demo_Invoice" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="Demo_More information" xml:space="preserve">
+    <value>More information</value>
+  </data>
+  <data name="Demo_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Demo_Next_Step" xml:space="preserve">
+    <value>Next Step</value>
+  </data>
+  <data name="Demo_Not_Delivered" xml:space="preserve">
+    <value>Not Delivered</value>
+  </data>
+  <data name="Demo_Not_paid" xml:space="preserve">
+    <value>Not paid</value>
+  </data>
+  <data name="Demo_Not_Sent" xml:space="preserve">
+    <value>Not Sent</value>
+  </data>
+  <data name="Demo_Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="Demo_Pay" xml:space="preserve">
+    <value>Pay</value>
+  </data>
+  <data name="Demo_Payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="Demo_Previous_step" xml:space="preserve">
+    <value>Previous step</value>
+  </data>
+  <data name="Demo_Public_Key" xml:space="preserve">
+    <value>Public Key</value>
+  </data>
+  <data name="Demo_Receiver" xml:space="preserve">
+    <value>Receiver</value>
+  </data>
+  <data name="Demo_Receivers_Portal" xml:space="preserve">
+    <value>Receiver's Portal</value>
+  </data>
+  <data name="Demo_Sender" xml:space="preserve">
+    <value>Sender</value>
+  </data>
+  <data name="Demo_Senders_Portal" xml:space="preserve">
+    <value>Sender's Portal</value>
+  </data>
+  <data name="Demo_Tracking_number" xml:space="preserve">
+    <value>Tracking number</value>
+  </data>
+  <data name="Nav_Escrow" xml:space="preserve">
+    <value>Escrow</value>
+  </data>
+</root>

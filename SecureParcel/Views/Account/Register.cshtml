@@ -1,4 +1,5 @@
 ﻿@using SecureParcel.Models
+@using SecureParcel.Resources
 @model RegisterViewModel
 
 @{
@@ -16,16 +17,16 @@
 </style>
 
 <section class="welcome" id="welcome">
-    <div class="container flex row">
+    <div class="container flex row jcsb">
         <div class="welcome__info">
-            <h1 class="title title--red">Прозрачная и гарантированная оплата за доставку товара через блокчейн Credits</h1>
+            <h1 class="title title--red">@Resource.Account_Login_Block1_Text_1_1</h1>
             <p>&nbsp;</p>
-            <p>Эскроу сервис благодаря блокчейн работает прозрачно и децентрализованно. Никто не сможет прервать операцию или отменить.</p>
+            <p>@Resource.Account_Login_Block1_Text_1_2</p>
         </div>
         <div class="forms">
             @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form flex column", role = "form" }))
             {
-                <h2 class="text--middle">Регистрация</h2>
+            <h2 class="text--middle">@Resource.BTN_Sign_up</h2>
                 @Html.AntiForgeryToken()
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -45,12 +46,12 @@
                 @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form__input", @placeholder = "Confirm password" })
 
-                <input class="button button--grey button--big" type="submit" value="Регистрация">
+                <input class="button button--grey button--big" type="submit" value="Confirm">
             }
 
             <section class="form flex column">
-                <h2 class="text--middle">Уже зарегистрированы?</h2>
-                <a href="/Account/Login" class="button button--red button--big">Войти</a>
+                <h2 class="text--middle">Already signed up?</h2>
+                <a href="/Account/Login" class="button button--red button--big">@Resource.BTN_Sign_in</a>
             </section>
         </div>
     </div>
@@ -59,93 +60,93 @@
     <div class="container flex row jcsb">
         <div class="list__case flex column jcsb aic">
             <div class="list__img"> <img src="/img/icon_1.svg" alt="Icon" /></div>
-            <p class="mt20 title--red">Защита сделки</p>
-            <p class="mt20">Блокчейн выступает гарантом оплаты за доставку</p>
+            <p class="mt20 title--red">@Resource.Account_Login_Block2_Text_1_1</p>
+            <p class="mt20">@Resource.Account_Login_Block2_Text_1_2</p>
         </div>
         <div class="list__case flex column jcsb aic">
             <div class="list__img"> <img src="/img/icon_2.svg" alt="Icon" /></div>
-            <p class="mt20 title--red">Экономия денег</p>
-            <p class="mt20">Экономичное решения для связки бизнес процессов компаний</p>
+            <p class="mt20 title--red">@Resource.Account_Login_Block2_Text_2_1</p>
+            <p class="mt20">@Resource.Account_Login_Block2_Text_2_2</p>
         </div>
         <div class="list__case flex column jcsb aic">
             <div class="list__img"> <img src="/img/icon_3.svg" alt="Icon" /></div>
-            <p class="mt20 title--red">Автоматизация</p>
-            <p class="mt20">Блокчейн это “робот” который работает самостоятельно</p>
+            <p class="mt20 title--red">@Resource.Account_Login_Block2_Text_3_1</p>
+            <p class="mt20">@Resource.Account_Login_Block2_Text_3_2</p>
 
         </div>
     </div>
 </section>
 <section class="why" id="why">
     <div class="container">
-        <h2 class="title--red text-center">Почему нужен эскроу сервис?</h2>
+        <h2 class="title--red text-center">@Resource.Account_Login_Block3_Text_Title</h2>
         <p>&nbsp;</p>
         <div class="row-x">
             <div class="left">
                 <img src="/img/cs-parcel.jpg" class="imger" />
             </div>
             <div class="right">
-                <p>Боб решил купить товар в другой или своей стране у Алисы. Но теперь Боб волнуется – как безопасно провести саму сделку? Вдруг продавец Алиса получит деньги, а товар не придет? Лучший вариант обезопасить себя – счет эскроу сервис на блокчейн..</p>
-                <p>Эскроу на блокчейн – это возможность использовать смарт контракты и систему счетов блокчейн Credits и для безопасного проведения расчетов между покупателем и продавцом. Смарт-контракты дают возможность автоматизировать наступления переходит от одного владельца к другому при наступлении определенных условий: получения товара покупателем при доставке товара через DHL.</p>
-                <p>Покупатель Боб кладет деньги а Продавец Алиса может их забрать, когда выполнит условия, заранее прописанные в смарт контракте на блокчейн. Блокчейн выступает сторонней децентрализованной системой которая автоматически без какого-либо участия человека или компании следит за выполнением этих условий.</p>
+                <p>@Resource.Account_Login_Block3_Text_1_1 <br /> @Resource.Account_Login_Block3_Text_1_2</p>
+                <p>@Resource.Account_Login_Block3_Text_2_1</p>
+                <p>@Resource.Account_Login_Block3_Text_3_1</p>
             </div>
         </div>
 
         <div class="hidden">
-            <p>Ключевым отличием является что блокчейн является максимально надежной средой которому доверяют все. Это обусловлено самим блокчейн Credits, в котором нет центрального администратора, С помощью Credits можно передавать не только деньги, но также ценные бумаги и любое движимое имущество. При этом посредником может быть не только банк, но и, например, нотариус.</p>
-            <p>Эскроу на блокчейн решает проблему недоверия участников сделки. Они не знают друг другу но доверяют сторонней системе блокчейн Credits. Это альтернатива банковской ячейке и аккредитиву, это следующая ступень в развитии автоматизированных сервисов как: самодвижущиеся машины, AI, робототехника.</p>
+            <p>The key difference is that blockchain is the most reliable environment that everyone trusts. This is the same for the Credits blockchain itself, which has no central administrator. With Credits, you can transfer not only money, but also securities and any movable property. In this case, the intermediary can not only be a bank but also, for example, a public notary.</p>
+            <p>Blockchain escrow solves the problem of mistrust between participants conducting a transaction. They do not know each other, but trust the third-party Credits blockchain system. This is an alternative to a safe deposit box, or an accreditation letter is the next step in the development of automated services like self-driving cars, AI, robotics.</p>
             <p>&nbsp;</p>
-            <h3 class="title--red">Как пользоваться счетом эскроу?</h3>
+            <h3 class="title--red">How to use an escrow account?</h3>
             <ul class="texter">
-                <li>Покупатель и продавец договариваются что получат товар через сервис доставки DHL. В сервисе которой работает на Credits  отправитель создает смарт-контракт и указывает срок, сумму и др. условия.</li>
-                <li>Покупатель вносит деньги на счет смарт-контракта.</li>
-                <li>Продавец Алиса отправляет товар и при выполняет условия доставки DHL передает команду которая выступает триггером выполненного условия.</li>
-                <li>Смарт-контракт на Credits разблокировывает средства, либо выдает деньги, либо перечисляет их на другой счет с помощью стороннего сервиса или банка.</li>
+                <li>The buyer and seller agree that the goods will be received via the DHL delivery service. In the service which runs on Credits, the sender creates a smart contract and indicates the terms, amount, and other conditions.</li>
+                <li>The buyer pays money to the account of the smart contract.</li>
+                <li>Alice the seller sends the goods and, fulfilling the delivery conditions, DHL transmits a command that acts as a trigger for the fulfilled condition.</li>
+                <li>A smart contract on Credits unlocks the funds, either by releasing money, or transferring it to another account using a third-party service or bank.</li>
             </ul>
-            <p>Если в оговоренный срок доставка не происходит, блокчейн приостанавливает сделку и возвращает деньги покупателю.</p>
+            <p>If delivery does not occur within the agreed time, the blockchain suspends the transaction and returns the money to the buyer.</p>
             <p>&nbsp;</p>
-            <h3 class="title--red">Почему именно блокчейн Credits?</h3>
-            <p>Потому что блокчейн Credits является независимой сторонней автономной системой, которая работает полностью независимо, беспрестанно и никто на всем земном шаре не может ей противостоять. Это ключевое отличие от обычных банковских и других эскроу сервисов.</p>
-            <p><b>Прозрачность</b> - Код смарт контракта  открытый и не сможет быть изменене в процессе работы.</p>
-            <p><b>Сохранность денег</b></p>
-            <p>Хранить деньги в банковской ячейке или на банковском счете обычно надежнее, чем дома. Вряд ли у вас в квартире есть такая же многоступенчатая система защиты и охрана, как в банке.</p>
+            <h3 class="title--red">Why use the Credits blockchain?</h3>
+            <p>Because Credits blockchain is an independent third-party autonomous system that works completely independently, continuously and no one on the globe can resist it. This is a key difference between Credits blockchain and conventional banking, or any other escrow services.</p>
+            <p><b>Transparency</b> - The smart contract code is open, and cannot be changed during the process.</p>
+            <p><b>Safety of money</b></p>
+            <p>Storing money in a safe deposit box, or a bank account is usually more reliable than at home. It is unlikely that your apartment has the same multi-stage security system and protection as a bank.</p>
             <p>&nbsp;</p>
-            <h3 class="title--red">Кому принадлежат деньги на счете эскроу?</h3>
-            <p>Вплоть до момента расчета деньги на счете смарт-контракта на блокчейн Credits. А после – тому, в чью пользу открыт счет. Момент расчета наступает, когда продавец выполняет условия, прописанные в договоре.</p>
-            <p class="title--red">Следующие типы денег могут использоваться</p>
+            <h3 class="title--red">Who owns the money in an escrow account?</h3>
+            <p>The money is withheld in the smart contract account on Credits blockchain. The money is released to the seller only upon fulfillment of the prescribed terms and conditions stipulated in the agreement.</p>
+            <p class="title--red">The following types of money can be used.</p>
             <ul class="texter">
-                <li>Электронные деньги выпущенные на блокчейн</li>
-                <li>Криптовалюту Credits (CS)</li>
-                <li>Доллары евро и другие деньги через банк или финансовый сервис (блокчейн отправляет команду о разблокировке)</li>
+                <li>Cryptocurrencies  issued on Credits blockchain</li>
+                <li>Credits (CS)  cryptocurrency</li>
+                <li>Dollars, Euros, or any other currency via a bank, or financial service (an unlock command is sent by the blockchain)</li>
             </ul>
         </div>
-        <a class="button button--red button--big" href="javascript:void(0);" id="tuglu" onclick="togglero();">Читать больше</a>
+        <a class="button button--red button--big" href="javascript:void(0);" id="tuglu" onclick="togglero();">@Resource.BTN_Continue_reading</a>
     </div>
 </section>
 <section class="trace" id="trace">
     <div class="container">
-        <h2 class="title--red text-center">Отслеживание любых посылок</h2>
+        <h2 class="title--red text-center">@Resource.Account_Login_Block4_Text_Title</h2>
         <div class="trace__wrapper flex row jcsb">
             <div class="trace__case flex column jcsb">
                 <div class="trace__img"> <img src="/img/icon-1.png" alt="Icon" /></div>
-                <p class="text--bold">Современное решение</p>
-                <p>Рынок блокчейн в 2030 году достигнет 3.1 трлн долл</p>
+                <p class="text--bold">@Resource.Account_Login_Block4_Text_1_1</p>
+                <p>@Resource.Account_Login_Block4_Text_1_2</p>
             </div>
             <div class="trace__case flex column jcsb">
                 <div class="trace__img"> <img src="/img/icon-2.png" alt="Icon" /></div>
-                <p class="text--bold">Доставка любых товаров и услуг</p>
-                <p>Любые сферы. От продуктов питания до контейнеров</p>
+                <p class="text--bold">@Resource.Account_Login_Block4_Text_2_1</p>
+                <p>@Resource.Account_Login_Block4_Text_2_2</p>
             </div>
             <div class="trace__case flex column jcsb">
                 <div class="trace__img"> <img src="/img/icon-3.png" alt="Icon" /></div>
-                <p class="text--bold">Гибкие системы интеграций</p>
-                <p>Смарт-контракты дают возможность гибкой настройки</p>
+                <p class="text--bold">@Resource.Account_Login_Block4_Text_3_1</p>
+                <p>@Resource.Account_Login_Block4_Text_3_2</p>
             </div>
         </div>
     </div>
 </section>
 <section class="management" id="management">
     <div class="container">
-        <h2 class="title--red text-center">Вы оцените удобство сервиса</h2>
+        <h2 class="title--red text-center">@Resource.Account_Login_Block5_Text_Title</h2>
         <p>&nbsp;</p>
         <div class="management__slider">
             <div class="management__wrapper" id="slider">
@@ -153,6 +154,6 @@
                 <div class="management__slide"> <img src="/img/slide3.jpeg" alt="Slide" /></div>
                 <div class="management__slide"> <img src="/img/slide2.jpeg" alt="Slide" /></div>
             </div>
-        </div><a class="button button--red button--big" href="">Отправить посылку</a>
+        </div><a class="button button--red button--big" href="">@Resource.BTN_Send_parcel</a>
     </div>
 </section>

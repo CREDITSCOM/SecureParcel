@@ -1,0 +1,196 @@
+﻿@using SecureParcel.Resources
+@{
+    ViewBag.Title = "SentShipment_Demo_4";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="Shipments flex column" id="main">
+
+    <div class="Shipments-content container mb-15">
+
+        <div class="row-box flex border-bottom-red">
+            <div class="">
+                <div class="container">
+                    <h2>
+                        <strong>Step 4:</strong>
+                        <span style="font-weight: 400;">Receive a delivery signal from DHL. Automatic settlement on smart contracts. Deal closed</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="cardsBox flex">
+            <div class="cards flex column">
+                <div class="cards_blocked"></div>
+                <div style="margin-bottom: 24px; font-size: 24px;"><strong>@Resource.Demo_Senders_Portal</strong></div>
+                <div class="item">
+                    <div>@Resource.Demo_Sender</div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Name*</div>
+                        <div>Alice Grey</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Public_Key* <a href="javascript:void(0);" class="question">?</a></div>
+                        <div>jfds7v980vdf896sd0s0vcxv9fs8y7</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Address*</div>
+                        <div>Los Angeles</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>@Resource.Demo_Payment</div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Cost_cs*</div>
+                        <div>700</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Date_of_payment*</div>
+                        <div>@Resource.Demo_Paid</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Invoice*</div>
+                        <div>jfds7v980vdf896sd0s0vcxv9fs8y7</div>
+                    </div>
+                    @*<div class="flex row">
+                        <div></div>
+                        <div><span class="btn-red" style="background-color: transparent"></span></div>
+                    </div>*@
+                </div>
+                <div class="item">
+                    <div>@Resource.Demo_More_information</div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Comments:</div>
+                        <div style="height: 50px;">@Resource.Demo_Comments_Text</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>@Resource.Demo_Receiver</div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Name*</div>
+                        <div>Bob Dylan</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Public_Key* <a href="javascript:void(0);" class="question">?</a></div>
+                        <div>bhjfsd89fsdv98yvsd98sdv9u8svd98udv</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Address*</div>
+                        <div>California</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>@Resource.Demo_Delivery</div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Delivery_Status:</div>
+                        <div>@Resource.Demo_Delivered</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Date_of_departure:</div>
+                        <div>10.09.2019</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Tracking_number:</div>
+                        <div>23718923173616723651723 81237</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards flex column">
+                @*<div class="cards_blocked"></div>*@
+                <div style="margin-bottom: 24px; font-size: 24px;"><strong>@Resource.Demo_Receivers_Portal</strong></div>
+                <div class="item">
+                    <div>@Resource.Demo_Receiver</div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Name*</div>
+                        <div>Alice Grey</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Public_Key* <a href="javascript:void(0);" class="question">?</a></div>
+                        <div>jfds7v980vdf896sd0s0vcxv9fs8y7</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Address*</div>
+                        <div>Los Angeles</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>@Resource.Demo_Payment</div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Cost_cs*</div>
+                        <div>700</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Date_of_payment*</div>
+                        <div>@Resource.Demo_Paid</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Invoice*</div>
+                        <div>jfds7v980vdf896sd0s0vcxv9fs8y7</div>
+                    </div>
+                    @*<div class="flex row">
+                        <div></div>
+                        <div><span class="btn-red" style="background-color: transparent"></span></div>
+                    </div>*@
+                </div>
+                <div class="item">
+                    <div>@Resource.Demo_More_information</div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Comments:</div>
+                        <div style="height: 50px;">@Resource.Demo_Comments_Text</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>@Resource.Demo_Receiver</div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Name*</div>
+                        <div>Bob Dylan</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Public_Key* <a href="javascript:void(0);" class="question">?</a></div>
+                        <div>bhjfsd89fsdv98yvsd98sdv9u8svd98udv</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Address*</div>
+                        <div>California</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>@Resource.Demo_Delivered</div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Delivery_Status:</div>
+                        <div>@Resource.Demo_Delivered</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Date_of_departure:</div>
+                        <div>10.09.2019</div>
+                    </div>
+                    <div class="flex row">
+                        <div>@Resource.Demo_Tracking_number:</div>
+                        <div>23718923173616723651723 81237</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container flex jcsb">
+            <a href="/SendParcel/SentShipment_Demo_3" class="btn-red">@Resource.Demo_Previous_step</a>
+            <div>&nbsp;</div>
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
