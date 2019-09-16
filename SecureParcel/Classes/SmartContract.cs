@@ -205,7 +205,8 @@ namespace SecureParcel.Classes
                         }
                     }), Base58Check.Base58CheckEncoding.DecodePlain("54tZoXaDa38n8rbg1BGrDMVBSP12TGcyE7UNvDQfD7w1uEMYCzdv7bpDycgiPwNd92opbZh94kVmArVoW4YFDF4j"));
 
-                    var source = transaction.Source;
+                    var source = Base58Check.Base58CheckEncoding.EncodePlain(transaction.Source);
+                    var target = Base58Check.Base58CheckEncoding.EncodePlain(transaction.Target);
                 }
             }
             catch (Exception err)
