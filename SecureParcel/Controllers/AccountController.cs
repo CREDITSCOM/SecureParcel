@@ -140,7 +140,7 @@ namespace SecureParcel.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.Email = "demo@demo.com";
-            ViewBag.Password = "demo123!";
+            ViewBag.Password = "Demo123!";
             ViewBag.ReturnUrl = returnUrl;
 
             return View();
