@@ -139,7 +139,10 @@ namespace SecureParcel.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            ViewBag.Email = "demo@demo.com";
+            ViewBag.Password = "demo123!";
             ViewBag.ReturnUrl = returnUrl;
+
             return View();
         }
 
@@ -161,7 +164,7 @@ namespace SecureParcel.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("ProfileAccount", "SendParcel");
+                    return RedirectToAction("SentShipment_Demo", "SendParcel");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -261,7 +264,7 @@ namespace SecureParcel.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "SendParcel");
+                    return RedirectToAction("SentShipment_Demo", "SendParcel");
                 }
                 AddErrors(result);
             }

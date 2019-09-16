@@ -16,8 +16,7 @@ namespace SecureParcel.Controllers
             //SmartContract.Deploy();
 
             if (User.Identity.IsAuthenticated)
-                //return RedirectToAction("Index", "SendParcel");
-                return RedirectToAction("ProfileAccount", "SendParcel");
+                return RedirectToAction("SentShipment_Demo", "SendParcel");
             else
                 return RedirectToAction("Login", "Account");
         }

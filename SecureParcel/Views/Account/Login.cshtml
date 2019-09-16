@@ -33,10 +33,10 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                @Html.TextBoxFor(m => m.Email, new { @class = "form__input", @placeholder = "Email" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form__input", @placeholder = "Email", @Value=ViewBag.Email })
 
                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                @Html.PasswordFor(m => m.Password, new { @class = "form__input", @placeholder = "Password" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form__input", @placeholder = "Password", @Value=ViewBag.Password })
 
                 <div class="form__field">
                     <input type="checkbox" id="checkbox">
