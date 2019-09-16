@@ -71,9 +71,6 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="Credtis Api Connect, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CredtisApiConnect.1.0.0\lib\netstandard2.0\Credtis Api Connect.dll</HintPath>
-    </Reference>
     <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -273,6 +270,11 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ParcelModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -280,12 +282,22 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Grid.mvc.readme" />
+    <Content Include="img\AllShipments\Account_arrow.png" />
+    <Content Include="img\AllShipments\arrow-red.png" />
+    <Content Include="img\AllShipments\arrow-white.png" />
+    <Content Include="img\AllShipments\edit-white.png" />
+    <Content Include="img\AllShipments\Logo-CS-PARSELS.png" />
+    <Content Include="img\AllShipments\Log_Out.png" />
+    <Content Include="img\AllShipments\monitor-red.png" />
+    <Content Include="img\AllShipments\qube-red.png" />
+    <Content Include="img\AllShipments\User.png" />
     <Content Include="img\arrow-left.svg" />
     <Content Include="img\arrow-right.svg" />
     <Content Include="img\bg-parcel.jpg" />
     <Content Include="img\check.svg" />
     <Content Include="img\cs-parcel.jpg" />
     <Content Include="img\dhl.png" />
+    <Content Include="img\favicon\favicon_dhl.ico" />
     <Content Include="img\girl-2.png" />
     <Content Include="img\girl.png" />
     <Content Include="img\hand.png" />
@@ -304,7 +316,9 @@
     <Content Include="img\mac.png" />
     <Content Include="img\slide.png" />
     <Content Include="img\slide1.jpeg" />
+    <Content Include="img\slide1.png" />
     <Content Include="img\slide2.jpeg" />
+    <Content Include="img\slide2.png" />
     <Content Include="img\slide3.jpeg" />
     <Content Include="js\libs.min.js" />
     <Content Include="js\main.js" />
@@ -356,6 +370,18 @@
     <Content Include="Views\SendParcel\Index.cshtml" />
     <Content Include="Views\GetParcel\Index.cshtml" />
     <Content Include="Views\Home\Index - Copy.cshtml" />
+    <Content Include="Views\Home\AllShipments.cshtml" />
+    <Content Include="Views\Home\ProfileAccount.cshtml" />
+    <Content Include="Views\Home\SentShipment.cshtml" />
+    <Content Include="Views\SendParcel\AllShipments.cshtml" />
+    <Content Include="Views\SendParcel\SentShipment.cshtml" />
+    <Content Include="Views\SendParcel\ProfileAccount.cshtml" />
+    <Content Include="Views\SendParcel\SentShipment_send.cshtml" />
+    <Content Include="Views\Home\SentShipment_send.cshtml" />
+    <Content Include="Views\SendParcel\SentShipment_Demo.cshtml" />
+    <Content Include="Views\SendParcel\SentShipment_Demo_2.cshtml" />
+    <Content Include="Views\SendParcel\SentShipment_Demo_3.cshtml" />
+    <Content Include="Views\SendParcel\SentShipment_Demo_4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -375,6 +401,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908122037519_up3.resx">
       <DependentUpon>201908122037519_up3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

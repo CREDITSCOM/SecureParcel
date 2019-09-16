@@ -1,11 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@using SecureParcel.Resources
+@{ 
+    var CurrentUrl_Last = HttpContext.Current.Request.Url.Segments[2];
+    //var CurrentUrl_Last = HttpContext.Current.Request.Url.Segments.Last();
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>CS.Parcels</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="keywords" content="">
-    <link rel="shortcut icon" href="/img/logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/favicon/favicon_dhl.ico?ads" type="image/x-icon">
 
     <link href="~/css/main.css?v30" rel="stylesheet" />
 
@@ -17,36 +22,97 @@
 <body>
 
     <section class="header">
-        <div class="container flex row jcsb aifs">
-            <a class="logo" href=""><img src="/img/Logo_Cr.png" alt="Credits Logo" /><img src="/img/dhl.png" class="pesel" alt="DHL Logo" /><div class="lablo">Escrow&nbsp;delivery&nbsp;service</div></a>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div class="header__nav-wrapper flex row jcsb aic"><a class="button button--grey button--middle" id="get-link" href="/GetParcel">Recieve parcel</a><a class="button button--grey button--middle ml20" id="send-link" href="/SendParcel">Send parcel</a></div>
+            <div class="nav-menu-one">
+                <div class="wrapper">
+                    <div class="main-menu container flex row">
+                        <div class="logoBox">
+                            <a class="logo" href="/Home/Index"><img src="/img/Logo_Cr.png" alt="Credits Logo" /><img src="/img/dhl.png" alt="DHL Logo" /><div class="lablo">@Resource.Nav_Escrow &nbsp;delivery&nbsp;service</div></a>
+                            @*<a class="logo" href="/Home/Index"><img src="/img/AllShipments/Logo-CS-PARSELS.png" alt="Alternate Text" /></a>*@
+                        </div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="btn-account-ProfileBox">
+                                <div class="text">
+                                    <div>You are signed in:</div>
+                                    <div class="text-red">Donald Trump</div>
+                                </div>
+                                <div class="btn-account-Profile">
+                                    <div class="textBox">
+                                        <div class="text">Account</div>
+                                        <div class="imgBox Account_arrow"><img src="~/img/AllShipments/Account_arrow.png" alt="Alternate Text" /></div>
+                                    </div>
 
-                <div class="header__nav-wrapper flex row jcsb aic">
-                    <div class="header__nav-text">
-                        <p class="text--dark">You are logged in as:</p>
-                        <p class="text--rec">Admin</p>
-                    </div><a class="button button--border-red button--small ml10" href="/Account/LogOff">Log out</a>
+                                    <div class="dropmenu-accountBox">
+                                        <div class="textBox">
+                                            <a href="/Home/ProfileAccount" class="text">Profile</a>
+                                            <div class="imgBox"><img src="~/img/AllShipments/User.png" alt="Alternate Text" /></div>
+                                        </div>
+                                        <hr />
+                                        <div class="textBox">
+                                            <a href="/Account/LogOff" class="text">Log out</a>
+                                            <div class="imgBox"><img src="~/img/AllShipments/Log_Out.png" alt="Alternate Text" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            if (ViewBag.ThisShipments_FixLayout == true)
+                            {
+
+                            }
+                            else
+                            {
+                    <div class="header__nav header__nav--main">
+                        <a class="header__nav-link text" href="#list">Main</a>
+                        <span> | </span>
+                        <a class="header__nav-link text" href="#why">Why us?</a>
+                        <span> | </span>
+                        <a class="header__nav-link text" href="#trace">Advantages</a>
+                        <span> | </span>
+                        <a class="header__nav-link text" href="#management">About us</a>
+                    </div>
+                            }
+
+                        }
+                    </div>
                 </div>
-            }
-            else
-            {
-                <div class="header__nav header__nav--main">
-                    <a class="header__nav-link text" href="#list">Главная</a>
-                    <a class="header__nav-link text" href="#why">Почему мы?</a>
-                    <a class="header__nav-link text" href="#trace">Преимущества</a>
-                    <a class="header__nav-link text" href="#management">О нас</a>
+            </div>
+
+        
+        @if (ViewBag.ThisShipments_FixLayout == true)
+        {
+            var asdf = HttpContext.Current.Request.Url.Segments.Last();
+            <div class="nav-menu-two">
+                <div class="wrapper">
+                    <div class="Shipments-menu container flex">
+                        <div class="left flex">
+                            <div class="item item-1 flex @(CurrentUrl_Last == "AllShipments" ? "active" : null)">
+                                <div class="qube-red"><img src="~/img/AllShipments/qube-red.png" alt="Alternate Text" /></div>
+                                <a href="/Home/AllShipments">All Shipments</a>
+                            </div>
+                            <div class="item item-1 flex @(CurrentUrl_Last == "SentShipment_Demo" || CurrentUrl_Last == "SentShipment_Demo_2" || CurrentUrl_Last == "SentShipment_Demo_3" || CurrentUrl_Last == "SentShipment_Demo_4" ? "active" : null)">
+                                <div class="qube-red"><img src="~/img/AllShipments/monitor-red.png" alt="Alternate Text" /></div>
+                                <a href="/Home/SentShipment_Demo">Demo</a>
+                            </div>
+                        </div>
+                        <div class="right flex">
+                            <a href="/Home/SentShipment_send" class="btn-red">Sent Shipment</a>
+                        </div>
+                    </div>
                 </div>
-            }
-        </div>
+            </div>
+
+        }
+
     </section>
 
     @RenderBody()
 
     <section class="footer">
         <div class="container">
-            <p class="text--white text--small">2019 © Credits. All rights reserved.</p>
+            <p class="text--white text--small" style="text-align: center;">2019 © DHL International GmbH. All rights reserved.</p>
         </div>
     </section>
 
@@ -173,9 +239,9 @@
         function togglero() {
             $('.hidden').toggle(0);
             if ($('.hidden').css('display') == "block") {
-                $('#tuglu').html('Скрыть');
+                $('#tuglu').html('Hide');
             } else if ($('.hidden').css('display') == "none") {
-                $('#tuglu').html('Читать больше');
+                $('#tuglu').html('Continue reading');
             }
         }
     </script>

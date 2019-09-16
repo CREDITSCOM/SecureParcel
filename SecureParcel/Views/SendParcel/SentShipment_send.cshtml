@@ -1,0 +1,104 @@
+﻿@using SecureParcel.Resources
+@{
+    ViewBag.Title = "SentShipment_send";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="Shipments wrapper flex" id="main">
+    <div class="container mb-135">
+        <form action="/" method="post">
+            <div class="line border-bottom-red">
+                <h2 class="Shipments-title">
+                    Create a new shipment
+                </h2>
+            </div>
+
+            <div class="Shipments-content mt-25 mb-35 border-bottom-gray">
+                <div class="line flex">
+                    <div class="left flex SenderReceiver">
+                        <div>@Resource.Demo_Sender</div>
+                        <div>
+                            <p>@Resource.Demo_Name*:</p>
+                            <p>Barack Obama</p>
+                            <p>@Resource.Demo_Public_Key*:</p>
+                            <p class="gray-text">jfds7v980vdf896sd0s0vcxv9fs8y7</p>
+                            <p>@Resource.Demo_Address*:</p>
+                            <input type="text" name="name" value="1600 Pennsylvania Avenue NW Washington, DC 20500" class="gray-text"/>
+                        </div>
+                    </div>
+                    <div class="right flex SenderReceiver">
+                        <div>@Resource.Demo_Receiver</div>
+                        <div>
+                            <p>@Resource.Demo_Name*:</p>
+                            <input type="text" name="name" value="Donald Trump" />
+                            <p>@Resource.Demo_Public_Key*:</p>
+                            <input type="text" name="name" value="jfds7v980vdf896sd0s0vcxv9fs8y7" class="gray-text"/>
+                            <p>@Resource.Demo_Address*:</p>
+                            <input type="text" name="name" value="C/O Trump Tower 725 5th Avenue New York, NY 10022" class="gray-text"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Shipments-content mt-25 mb-35 border-bottom-gray">
+                <div class="line flex">
+                    <div class="left flex SenderReceiver PaymentDelivery">
+                        <div>@Resource.Demo_Payment</div>
+                        <div>
+                            <p>@Resource.Demo_Cost_cs*:</p>
+                            <input type="text" name="name" value="700" />
+                            <p>@Resource.Demo_Invoice*:</p>
+                            <p class="gray-text">jfds7v980vdf896sd0s0vcxv9fs8y7</p>
+                        </div>
+                        <div>
+                            <p>@Resource.Demo_Date_of_payment*:</p>
+                            <p>@Resource.Demo_Not_paid</p>
+                            @*<input type="text" name="name" value="Resource.Demo_Not_paid" />*@
+                            <a href="javascript:void(0);" class="btn-red" style="width: initial; font-size: 20px; max-width: 100%; padding: 0 25px; box-sizing: border-box;">@Resource.Demo_Pay</a>
+                        </div>
+                    </div>
+
+                    <div class="right flex SenderReceiver PaymentDelivery">
+                        <div>@Resource.Demo_Delivery</div>
+                        <div>
+                            <div class="flex">
+                                <div>
+                                    <p>@Resource.Demo_Delivery_Status:</p>
+                                    <p>@Resource.Demo_Not_Delivered</p>
+                                </div>
+                                <div style="margin-left: 40px;">
+                                    <p>@Resource.Demo_Date_of_departure:</p>
+                                    <p>@Resource.Demo_Delivery_failure</p>
+                                </div>
+                            </div>
+                            <p>@Resource.Demo_Tracking_number:</p>
+                            <input type="text" name="name" value="23718923173616723651723 81237" />
+                            @*<p class="gray-text">23718923173616723651723 81237</p>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Shipments-content mt-25 mb-35">
+                <div class="line flex">
+                    <div class="left flex SenderReceiver PaymentDelivery">
+                        <div>@Resource.Demo_More_information</div>
+                        <div>
+                            <p>@Resource.Demo_Comments:</p>
+                            <textarea>@Resource.Demo_Comments_Text</textarea>
+                        </div>
+                    </div>
+
+                    <div class="right flex btn-Close-box ">
+                        <a href="javascript:void(0);" class="Shipments-btn btn-Close">@Resource.BTN_Close</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+
+
+
