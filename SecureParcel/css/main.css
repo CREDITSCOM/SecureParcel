@@ -736,7 +736,8 @@ label {
     background: rgba(95, 92, 92, .7);
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out
+    transition: all .2s ease-in-out;
+    z-index: 777;
 }
 
 .modal__wrapper {

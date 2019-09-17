@@ -125,7 +125,7 @@
                         <div>@Resource.Demo_Cost_cs*</div>
                         <div class="flex" style="align-items: center; width: auto;">
                             <div style="margin-right: 50px; padding: 10px 0;">700</div>
-                            <a href="javascript:void(0);" class="btn-red box_shadow_active">@Resource.Demo_Pay</a>
+                            <a href="javascript:void(0);" class="btn-pay btn-red box_shadow_active">@Resource.Demo_Pay</a>
                         </div>
                     </div>
                     <div class="flex row">
@@ -190,9 +190,65 @@
 
 </section>
 
+<div class="modal modal-YourTransaction is-hidden">
+    <div class="modal-itemBox">
+        <div class="modal-item">
+            <div class="part1">
+                <h2 class="mb-15">Your transaction:</h2>
+                <a href="https://monitor.credits.com/testnet-r4_2/transaction/3556370.2" style="margin-bottom: 50px; display: block;">https://monitor.credits.com/testnet-r4_2/transaction/3556370.2</a>
+            </div>
+            <p class="mb-35" style="max-width: 100%; width: 680px; padding: 0 15px;">
+                Your funds have been transferred to the escrow account. 
+                <br />
+                At the time of delivery, your money will be  transferred to sender's account.
+            </p>
+            <a href="javascript:void(0);" class="modal-YourTransaction-btn-Close btn-red" style="width: 246px; max-width: 100%;">Close</a>
+        </div>
+    </div>
+</div>
 
 
 
+<style>
+    .modal-itemBox{
+        position: absolute;
+        width: 800px;
+        height: 430px;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        background: #F8F8F8;
+        padding: 27px 15px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .modal-itemBox *{
+        font-family:Avant;
+        font-size: 24px;
+        line-height: 29px;
+        text-align: center;
+    }
+    .modal-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .modal-item .part1 a{
+        font-weight: 700;
+    }
+</style>
 
-
-
+<script>
+$(document).ready(function() {
+    $(".btn-pay").on('click', function () {
+        $(".modal-YourTransaction").removeClass('is-hidden');
+        $("body").css('overflow', 'hidden');
+    });
+    $(".modal-YourTransaction-btn-Close").on('click', function () {
+        $(".modal-YourTransaction").addClass('is-hidden'); 
+        $("body").css('overflow', 'initial');
+    });
+});
+</script>
